@@ -44,6 +44,10 @@ class MyVehicle extends CGFobject
 
 	display() {
 
+		this.scene.pushMatrix();	
+		this.myChassis.display();	
+        this.scene.popMatrix();
+
         //rodas traseiras
         this.scene.pushMatrix();	
         this.scene.translate(0 ,0,2)
@@ -66,10 +70,7 @@ class MyVehicle extends CGFobject
         this.scene.rotate(-180 * degToRad, 1, 0, 0);
 		this.myWheel.display();	
         this.scene.popMatrix();
-        
-        this.scene.pushMatrix();	
-		this.myChassis.display();	
-        this.scene.popMatrix();
+	
 
 		//janelas esquerdas
 		this.scene.pushMatrix();
@@ -85,6 +86,7 @@ class MyVehicle extends CGFobject
 		this.scene.translate(1.3, 1.6, 1.55);	
 		this.window.display();	
         this.scene.popMatrix();
+
 
 		//janela da frente
         this.scene.pushMatrix();

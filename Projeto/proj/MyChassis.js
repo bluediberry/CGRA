@@ -28,6 +28,27 @@ class MyChassis extends CGFobject
 
 	this.escape = new MyCylinder(this.scene, 30, 20);
 
+	this.lightsAppearance = new CGFappearance(this.scene);
+	this.lightsAppearance.loadTexture("../resources/images/carlight.png");
+	this.lightsAppearance.setAmbient(1,1,1,1);
+	this.lightsAppearance.setDiffuse(0.9,0.95,0.95,1);
+	this.lightsAppearance.setSpecular(1.0,1.0,1.0,1);
+	this.lightsAppearance.setShininess(900);
+	
+	this.blackAppearance = new CGFappearance(this.scene);
+	this.blackAppearance.loadTexture("../resources/images/mblack.png");
+	this.blackAppearance.setAmbient(1,1,1,1);
+	this.blackAppearance.setDiffuse(0.9,0.95,0.95,1);
+	this.blackAppearance.setSpecular(1.0,1.0,1.0,1);
+	this.blackAppearance.setShininess(9);	
+
+	this.greyAppearance = new CGFappearance(this.scene);
+	this.greyAppearance.loadTexture("../resources/images/mgrey.png");
+	this.greyAppearance.setAmbient(1,1,1,1);
+	this.greyAppearance.setDiffuse(0.9,0.95,0.95,1);
+	this.greyAppearance.setSpecular(1.0,1.0,1.0,1);
+	this.greyAppearance.setShininess(9);	
+
 	this.initBuffers();
 
 
@@ -36,6 +57,7 @@ class MyChassis extends CGFobject
 
 
 	display() {
+
 
 		//base
 		this.scene.pushMatrix();	
@@ -70,6 +92,7 @@ class MyChassis extends CGFobject
 
 		//parachoques frente
 		this.scene.pushMatrix();	
+		if (typeof this.greyAppearance !== 'undefined') this.greyAppearance.apply();
 		this.scene.translate(5.2, 0.1, 1);
 		this.scene.scale(0.2, 0.4, 2.5);
 		this.scene.rotate(-90 * degToRad, 1, 0, 0);
@@ -78,6 +101,7 @@ class MyChassis extends CGFobject
 
 		//parachoques tras
 		this.scene.pushMatrix();	
+		if (typeof this.greyAppearance !== 'undefined') this.greyAppearance.apply();
 		this.scene.translate(-1.3, 0.1, 1);
 		this.scene.scale(0.2, 0.5, 2.5);
 		this.scene.rotate(-90 * degToRad, 1, 0, 0);
@@ -86,6 +110,7 @@ class MyChassis extends CGFobject
 
 		//farois
 		this.scene.pushMatrix();
+		if (typeof this.blackAppearance !== 'undefined') this.blackAppearance.apply();
 		this.scene.scale(0.4, 0.4, 0.4);	
 		this.scene.translate(14, 2, 0.5);
 		this.scene.rotate(90 * degToRad, 0, 0,1)
@@ -93,6 +118,7 @@ class MyChassis extends CGFobject
 		this.scene.popMatrix();
 
 		this.scene.pushMatrix();
+		if (typeof this.blackAppearance !== 'undefined') this.blackAppearance.apply();
 		this.scene.scale(0.4, 0.4, 0.4);	
 		this.scene.translate(14, 2, 4.5);
 		this.scene.rotate(90 * degToRad, 0, 0,1)
@@ -101,13 +127,15 @@ class MyChassis extends CGFobject
 
 		//luzes dos farois
 		this.scene.pushMatrix();	
+		if (typeof this.lightsAppearance !== 'undefined') this.lightsAppearance.apply();
 		this.scene.scale(0.4, 0.4, 0.4);
 		this.scene.translate(13, 2, 0.5);
 		this.scene.rotate(90 * degToRad, 0, 1, 0)
 		this.light.display();	
 		this.scene.popMatrix();
 
-		this.scene.pushMatrix();	
+		this.scene.pushMatrix();
+		if (typeof this.lightsAppearance !== 'undefined') this.lightsAppearance.apply();	
 		this.scene.scale(0.4, 0.4, 0.4);
 		this.scene.translate(13, 2, 4.5);
 		this.scene.rotate(90 * degToRad, 0, 1, 0)
@@ -116,6 +144,7 @@ class MyChassis extends CGFobject
 
 		//escapes
 		this.scene.pushMatrix();	
+		if (typeof this.blackAppearance !== 'undefined') this.blackAppearance.apply();
 		this.scene.translate(-1.6 , 0.0, 0.2);
 		this.scene.rotate(90 * degToRad, 0, 1, 0)
 		this.scene.scale(0.1, 0.1, 1);
@@ -123,6 +152,7 @@ class MyChassis extends CGFobject
 		this.scene.popMatrix();
 		
 		this.scene.pushMatrix();	
+		if (typeof this.blackAppearance !== 'undefined') this.blackAppearance.apply();
 		this.scene.translate(-1.6 , 0.0, 0.5);
 		this.scene.rotate(90 * degToRad, 0, 1, 0)
 		this.scene.scale(0.1, 0.1, 1);

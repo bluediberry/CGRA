@@ -29,16 +29,21 @@ class MyLamp extends CGFobject
 		this.vertices = [];
 		this.indices = [];
 		this.normals = [];
+		this.texCoords = [];
 
 		this.vertices.push(0, 1, 0);
 		this.normals.push(0, 1, 0);
+		this.texCoords.push(0.5, 0.5);
 
 		variacaoAltura -= altura;
+
 
 		raio = Math.sqrt(1- variacaoAltura*variacaoAltura);
 
 		this.vertices.push(raio*Math.cos(variacaoAngulo), variacaoAltura, raio*Math.sin(variacaoAngulo));
 		this.normals.push(raio*Math.cos(variacaoAngulo), variacaoAltura, raio*Math.sin(variacaoAngulo));
+		this.texCoords.push(0.5 + (1-variacaoAltura)*0.5*Math.cos(variacaoAngulo),
+				0.5 + (1-variacaoAltura)*0.5*Math.sin(variacaoAngulo));
 
 		variacaoAngulo += angulo;
 
@@ -47,7 +52,9 @@ class MyLamp extends CGFobject
 
 				this.vertices.push(raio*Math.cos(variacaoAngulo), variacaoAltura, raio*Math.sin(variacaoAngulo));
 				this.normals.push(raio*Math.cos(variacaoAngulo), variacaoAltura, raio*Math.sin(variacaoAngulo));
-				
+				this.texCoords.push(0.5 + (1-variacaoAltura)*0.5*Math.cos(variacaoAngulo),
+				0.5 + (1-variacaoAltura)*0.5*Math.sin(variacaoAngulo));
+
 				variacaoAngulo += angulo;
 
 				this.indices.push(0, indice + 1, indice);
@@ -66,6 +73,8 @@ class MyLamp extends CGFobject
 
 				this.vertices.push(raio*Math.cos(variacaoAngulo), variacaoAltura, raio*Math.sin(variacaoAngulo));
 				this.normals.push(raio*Math.cos(variacaoAngulo), variacaoAltura, raio*Math.sin(variacaoAngulo));
+				this.texCoords.push(0.5 + (1-variacaoAltura)*0.5*Math.cos(variacaoAngulo),
+				0.5 + (1-variacaoAltura)*0.5*Math.sin(variacaoAngulo));
 				
 				variacaoAngulo += angulo;
 
@@ -73,6 +82,8 @@ class MyLamp extends CGFobject
 
 					this.vertices.push(raio*Math.cos(variacaoAngulo), variacaoAltura, raio*Math.sin(variacaoAngulo));
 					this.normals.push(raio*Math.cos(variacaoAngulo), variacaoAltura, raio*Math.sin(variacaoAngulo));
+					this.texCoords.push(0.5 + (1-variacaoAltura)*0.5*Math.cos(variacaoAngulo),
+					0.5 + (1-variacaoAltura)*0.5*Math.sin(variacaoAngulo));
 					
 					variacaoAngulo += angulo;
 

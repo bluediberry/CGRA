@@ -64,6 +64,15 @@ class MyInterface extends CGFinterface {
 
 		group.add(this.scene, 'Desenhar');
 
+
+		var othergroup=this.gui.addFolder("CarTextures");
+		othergroup.open();
+
+		othergroup.add(this.scene, 'red');
+		othergroup.add(this.scene, 'modern');
+		othergroup.add(this.scene, 'gucci');
+		othergroup.add(this.scene, 'military');
+
 		// add a slider
 		// must be a numeric variable of the scene, initialized in scene.init e.g.
 		// this.speed=3;
